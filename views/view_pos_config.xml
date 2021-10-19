@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="aspl_view_pos_config_form" model="ir.ui.view">
+			<field name="name">pos.config.form.view</field>
+			<field name="model">pos.config</field>
+			<field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//div[@id='inventory_location']" position="after">
+                    <h2>Pago de Servicios</h2>
+
+                    <div class="row mt16 o_settings_container" id="custom_comision_ta">
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="Pago de servicios.">
+                            <div class="o_setting_right_pane">
+                                <label for="comision_tiempo_aire" string="Comision TIEMPO AIRE"/>
+                                <div class="content-group mt16">
+                                    <field name="comision_tiempo_aire"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt16 o_settings_container" id="custom_comision_servicio">
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="Pago de servicios.">
+                            <div class="o_setting_right_pane">
+                                <label for="minimo_tiempo_aire" string="Monto minimo para omitir comision TA"/>
+                                <div class="content-group mt16">
+                                    <field name="minimo_tiempo_aire"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row mt16 o_settings_container" id="custom_comision_servicio">
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="Pago de servicios.">
+                            <div class="o_setting_right_pane">
+                                <label for="comision_servicio" string="Comision PAGO DE SERVICIOS"/>
+                                <div class="content-group mt16">
+                                    <field name="comision_servicio"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row mt16 o_settings_container" id="url_servicio">
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="Pago de servicios.">
+                            <div class="o_setting_right_pane">
+                                <label for="url" string="URL de Servicio"/>
+                                <div class="content-group mt16">
+                                    <field name="url"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row mt16 o_settings_container" id="usuario_servicio">
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="Usuario servicio.">
+                            <div class="o_setting_right_pane">
+                                <label for="usuario" string="Usuario de Servicio"/>
+                                <div class="content-group mt16">
+                                    <field name="usuario"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt16 o_settings_container" id="password_servicio">
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="Password servicio.">
+                            <div class="o_setting_right_pane">
+                                <label for="password" string="Password de Servicio"/>
+                                <div class="content-group mt16">
+                                    <field name="password" password="True"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt16 o_settings_container" id="id_distribuidor_servicio">
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="id_distribuidor_servicio.">
+                            <div class="o_setting_right_pane">
+                                <label for="id_distribuidor" string="Id distribuidor de Servicio"/>
+                                <div class="content-group mt16">
+                                    <field name="id_distribuidor"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+				</xpath>
+			</field>
+		</record>
+
+    </data>
+
+</odoo>
