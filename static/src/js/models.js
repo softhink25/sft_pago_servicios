@@ -20,4 +20,35 @@ var _t = core._t;
             }
     });
 
+
+    var _super_Orderline = module.Orderline.prototype;
+
+    module.Orderline = module.Orderline.extend({
+        export_as_JSON: function () {
+            var json = _super_Orderline.export_as_JSON.apply(this, arguments);
+            if (this.precio_servicio){
+                json.precio_servicio = this.precio_servicio;
+            }
+            if (this.descripcion){
+                json.descripcion = this.descripcion;
+            }
+            return json;
+        },
+        set_precio_servicio: function (precio_servicio) {
+            this.precio_servicio = precio_servicio;
+            this.trigger('change', this);
+        },
+        get_precio_servicio: function () {
+            return this.precio_servicio;
+        },
+        set_descripcion: function (descripcion) {
+            this.descripcion = descripcion;
+            this.trigger('change', this);
+        },
+        get_descripcion: function () {
+            return this.descripcion;
+        },
+
+    })
+
 });

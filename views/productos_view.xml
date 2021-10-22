@@ -20,7 +20,7 @@
             <field name="model">pos.order</field>
             <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='product_id']" position="after">
+                <xpath expr="//field[@name='full_product_name']" position="after">
                     <field name="descripcion" string="Descripcion" />
                 </xpath>
             </field>
@@ -30,7 +30,8 @@
         <template id="assets" inherit_id="point_of_sale.assets">
           <xpath expr="." position="inside">
               <script type="text/javascript" src="/sft_pago_servicios/static/src/js/models.js"></script>
-              <script type="text/javascript" src="/sft_pago_servicios/static/src/js/ta_pos.js"></script>
+<!--              <script type="text/javascript" src="/sft_pago_servicios/static/src/js/ta_pos.js"></script>-->
+              <script type="text/javascript" src="/sft_pago_servicios/static/src/js/TiempoAireBoton.js"></script>
               <link rel="stylesheet" href="/sft_pago_servicios/static/src/css/estilo.css"></link>
 
               <!-- TODO COMBOBOX-->
