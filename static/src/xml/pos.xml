@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
 
+
     <t t-name="TiempoAireBoton" owl="1">
        <span class="control-button" t-att-class="is_available()?    'highlight' : ''">
-           <i class="fa fa-star"></i>
+           <i class="fa fa-mobile"></i>
            <span> </span>
            <span>Tiempo Aire</span>
        </span>
    </t>
-
 
     <t t-name="CompaniaPopup" owl="1">
         <div class="modal-dialog">
@@ -20,7 +20,7 @@
                     Saldo disponible: $<span id="saldospan">00.00</span>
                 </p>
                 <br/>
-                <div class="content-container" style="position: absolute;top:25%; left: 4%;left: 4%;">
+                <div class="content-container" style=";top:25%; left: 4%;left: 4%;">
 	                <img class="compania" t-on-click="trigger('click-compania', {compania : 2})"  compania="2" src="/sft_pago_servicios/static/img/icon_telcel.png"/>
                     <img class="compania" t-on-click="trigger('click-compania', {compania : 3})" compania='3' src="/sft_pago_servicios/static/img/icon_att.png"/>
                     <img class="compania" t-on-click="trigger('click-compania', {compania : 13})" compania='13' src="/sft_pago_servicios/static/img/icon_cierto.png"/>
@@ -31,18 +31,16 @@
                     <img class="compania" t-on-click="trigger('click-compania', {compania : 12})" compania='12' src="/sft_pago_servicios/static/img/icon_virgin.png"/>
                 </div>
                 <div class="footer">
-                    <div class='button accept' id="registar_abono">
+                    <div class='button accept' id="registar_abono" t-on-click="trigger('click-abono',{})">
                         Registrar Abono
                     </div>
-                    <div class="button cancel" id="compania_cancel">
+                    <div  t-on-click="confirm" class="button cancel" id="compania_cancel">
                         Cancel
                     </div>
                 </div>
             </div>
         </div>
     </t>
-
-
     <t t-name="ProductoPopup" owl="1">
         <div class="modal-dialog">
             <div class="popup" style="height: 600px;width:550px;">
@@ -61,7 +59,6 @@
             </div>
         </div>
     </t>
-
     <t t-name="TiempoAirePopup" owl="1">
         <div class="modal-dialog">
             <div class="popup" style="height: 380px;">
@@ -85,27 +82,20 @@
                     <div class="button " t-on-click="trigger('click-confirmar', {producto : producto})" id="registrar_ta">
                         Confirm
                     </div>
-                    <div class="button cancel">
+                    <div  t-on-click="confirm" class="button cancel">
                         Cancel
                     </div>
                 </div>
             </div>
         </div>
     </t>
-
-
-
-
-    <t t-name="PagoServiciosButton">
+    <t t-name="PagoServiciosButton" owl="1">
         <div class='control-button'>
             <i class="fa fa-ticket" aria-hidden="true"></i>Pago de servicios
         </div>
     </t>
 
-
-
-
-    <t t-name="AbonoPopup">
+    <t t-name="AbonoPopup" owl="1">
         <div class="modal-dialog">
             <div class="popup" style="height:590px;">
                 <p class="title">
@@ -154,32 +144,32 @@
                     <textarea type="text" id="abono_mensaje" readonly="true" style="width:78%;"></textarea>
                 </div>
                 <div class="footer">
-                    <div class="button  " id="abono_abonar">
+                    <div class="button  " id="abono_abonar" t-on-click="trigger('click_abonar', {})">
                         Abonar
                     </div>
-                    <div class="button cancel" id="abono_cancel">
+                    <div  t-on-click="confirm" class="button cancel" id="abono_cancel">
                         Cancel
                     </div>
                 </div>
             </div>
         </div>
     </t>
-<!--    <t t-name="ProductoPopup">-->
-<!--        <div class="modal-dialog">-->
-<!--            <div class="popup" style="height: 600px;width:550px;">-->
-<!--                <p class="title" id="titulo_producto"/>-->
-<!--                <div class="content-container product-list-scroller touch-scrollable"-->
-<!--                     style="position: absolute;top:50px; left: 1%;max-height: 470px;" id="contenedor_producto">-->
-<!--                    <div class="product producto invisible" id="producto_base"></div>-->
-<!--                </div>-->
-<!--                <div class="footer">-->
-<!--                    <div class="button cancel">-->
-<!--                        Cancel-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </t>-->
+    <!--<t t-name="ProductoPopup">
+        <div class="modal-dialog">
+            <div class="popup" style="height: 600px;width:550px;">
+                <p class="title" id="titulo_producto"/>
+                <div class="content-container product-list-scroller touch-scrollable"
+                     style="position: absolute;top:50px; left: 1%;max-height: 470px;" id="contenedor_producto">
+                    <div class="product producto invisible" id="producto_base"></div>
+                </div>
+                <div class="footer">
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>-->
 
 
 
@@ -187,12 +177,12 @@
 
     <!-- *-*-*-*- Pago de servicios -*-*-*-*-*-* -->
 
-     <t t-name="SelectServicio">
-        <div class="modal-dialog">
-            <div class="popup" style="height: 250px;width:650px;">
+     <t t-name="SelectServicio" owl="1">
+        <div class="modal-dialog center">
+            <div class="popup" style="height: 250px;width:600px;max-width:600px;">
                 <p class="title" id="titulo_selec_serv">Seleccione el servicio a pagar</p>
 
-                 <select style="margin:13px; font-size:15px; max-width:500px;       display:none;" id="combobox" placeholder="Seleccionar Servicio">        <!-- para usar el TODO COMBOBOX se agrega  display:none;   -->
+                 <select class="form-control" style="margin:13px; font-size:18px;height:40px;line-height:40px; max-width:570px;display:none;" id="combobox" placeholder="Seleccionar Servicio" >        <!-- para usar el TODO COMBOBOX se agrega  display:none;   -->
 
 
                  </select>
@@ -210,10 +200,10 @@
                 </p>
 
                 <div class="footer">
-                    <div class="button ok_selected" >
+                    <div class="button ok_selected" t-on-click="trigger('click-siguiente', {})">
                         Continuar
                     </div>
-                    <div class="button cancel">
+                    <div class="button cancel"  t-on-click="confirm">
                         Cancelar
                     </div>
                 </div>
@@ -222,12 +212,10 @@
     </t>
 
 
-    <t t-name="DetallesDePago">
+    <t t-name="DetallesDePago" owl="1">
         <div class="modal-dialog">
             <div class="popup" style="height:570px; width:620px;">
                 <p class="title" id="titulo_detalles_de_pago">Datos requeridos</p>
-
-
                 <div class="content-container" style="float: left; margin-left: 25px; width:90%;">
                      <div style="padding:14px; width: 100%; text-align: center;">
                         <span style="display: inline-block; margin:7px; font-size:20px; font-style:italic;">Nombre del servicio: </span>
@@ -236,7 +224,7 @@
 
                      <div disabled="true" style="float:left; padding:10px; display: flex; width:100%;">
                         <span class="label_monto" style="margin: 7px;font-size: 20px;font-style: italic;min-width:100px; ">Monto </span>
-                        <input disabled="true" class="input_monto" type="text" name="input_monto" style="width:50%;"></input>
+                        <input disabled="true" id="input_monto" type="text" name="input_monto" style="width:40%;"></input>
 
                          <div style="float:center; width: auto; padding:10px; display: flex; ">
                             <span class="comision" value="0" style="font-size: 20px;font-style: italic;">Comision $0</span>
@@ -246,12 +234,12 @@
 
                      <div style="float:left; padding:10px; display: flex; width:96%;">
                         <span class="label_ref" style="display:none; margin:7px; font-size:20px; font-style: italic; min-width:100px;">Referencia </span>
-                        <input  class="input_ref" type="text" name="input_ref" style="display: none; width:100%;"></input>
+                        <input  class="input_ref" type="text" id="input_ref" style="display: none; width:100%;"></input>
                      </div><br></br>
 
                     <div style="float:left; padding:10px; display: flex; width: 96%">
                         <span class="label_telefono" style="display:none; margin:7px; font-size:20px; font-style:italic;min-width:100px;">Telefono </span>
-                        <input class="input_telefono" type="text" style="display: none; width: 100%" name="input_tel"></input>
+                        <input id="input_telefono" type="text" style="display: none; width: 100%" name="input_tel"></input>
                      </div><br></br>
 
                     <div style="float:left; padding:10px; display: flex; width: 96%;">
@@ -267,10 +255,10 @@
                 </div>
 
                 <div class="footer">
-                    <div class="button ok_detalles">
+                    <div class="button ok_detalles" t-on-click="trigger('click-siguiente', {})" >
                         Continuar
                     </div>
-                    <div class="button cancel">
+                    <div class="button cancel" t-on-click="confirm">
                         Cancelar
                     </div>
                 </div>
