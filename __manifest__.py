@@ -10,9 +10,17 @@
     'category': 'Point of sale',
     'summary': 'Pago de servicios',
     'depends': ['point_of_sale'],
-    'qweb': [
-        'static/src/xml/pos.xml',
-    ],
+    'assets': {
+        'point_of_sale.assets': [
+            'sft_pago_servicios/static/src/js/**/*',
+        ],
+        'web.assets_qweb': [
+            'sft_pago_servicios/static/src/xml/**/*',
+        ],
+    },
+    # 'qweb': [
+    #     'static/src/xml/pos.xml',
+    # ],
     'data': [
         'views/productos_view.xml',
         "views/view_pos_config.xml"

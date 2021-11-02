@@ -27,11 +27,11 @@
         </record>
 
 
-        <template id="assets" inherit_id="point_of_sale.assets">
+        <template id="assets" inherit_id="point_of_sale.assets_common">
           <xpath expr="." position="inside">
-              <script type="text/javascript" src="/sft_pago_servicios/static/src/js/models.js"></script>
+<!--              <script type="text/javascript" src="/sft_pago_servicios/static/src/js/models.js"></script>-->
 <!--              <script type="text/javascript" src="/sft_pago_servicios/static/src/js/ta_pos.js"></script>-->
-              <script type="text/javascript" src="/sft_pago_servicios/static/src/js/TiempoAireBoton.js"></script>
+<!--              <script type="text/javascript" src="/sft_pago_servicios/static/src/js/TiempoAireBoton.js"></script>-->
               <link rel="stylesheet" href="/sft_pago_servicios/static/src/css/estilo.css"></link>
 
               <!-- TODO COMBOBOX-->
