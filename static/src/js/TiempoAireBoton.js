@@ -309,43 +309,43 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                                          $('.o_loading').hide();
                                           if("-1"!==data.NUM_AUTORIZACION&&"0"!==data.NUM_AUTORIZACION){
 
-                                            var order = self.pos.get_order();
-                                            var product_base = self.pos.db.get_product_by_barcode('TIEMPO_AIRE');
+                                            var order = self.env.pos.get_order();
+                                            var product_base = self.env.pos.db.get_product_by_barcode('TIEMPO_AIRE');
 
                                             //clona producto para evitar que sobreescriba otro
                                             var product_clone = Object.create(product_base);
 
-                                            product_clone.display_name= self.gui.producto.Producto+" Tel. "+no_telefono+" No. Autorización : "+data.NUM_AUTORIZACION;
-                                            product_clone.list_price = self.gui.producto.Precio;
-                                            product_clone.lst_price = self.gui.producto.Precio;
-                                            product_clone.standard_price = self.gui.producto.Precio;
-                                            product_clone.list_price = self.gui.producto.Precio;
-
+                                            product_clone.display_name= self.env.producto.Producto+" Tel. "+no_telefono+" No. Autorización : "+data.NUM_AUTORIZACION;
+                                            product_clone.list_price = self.env.producto.Precio;
+                                            product_clone.lst_price = self.env.producto.Precio;
+                                            product_clone.standard_price = self.env.producto.Precio;
+                                            product_clone.list_price = self.env.producto.Precio;
+                                            product_clone.set_descripcion(product_clone.display_name)  ;
                                             order.add_product(product_clone);
-                                            order.get_last_orderline().set_descripcion(product_clone.display_name);
+                                            /*order.get_last_orderline().set_descripcion(product_clone.display_name);*/
 
-                                            if(self.pos.config.comision_tiempo_aire){
-                                                  var comision_prod_base = self.pos.db.get_product_by_barcode('COM_PAGO_SERV');
+                                            if(self.env.pos.config.comision_tiempo_aire){
+                                                  var comision_prod_base = self.env.pos.db.get_product_by_barcode('COM_PAGO_SERV');
                                                   //clona producto para evitar que sobreescriba otro
                                                   var comision_prod = Object.create(comision_prod_base);
-                                                  if(!self.pos.config.minimo_tiempo_aire){
+                                                  if(!self.env.pos.config.minimo_tiempo_aire){
                                                     comision_prod.display_name = "Comision tiempo aire";
 
-                                                    comision_prod.list_price = self.pos.config.comision_tiempo_aire;
-                                                    comision_prod.lst_price = self.pos.config.comision_tiempo_aire;
-                                                    comision_prod.standard_price = self.pos.config.comision_tiempo_aire;
+                                                    comision_prod.list_price = self.env.pos.config.comision_tiempo_aire;
+                                                    comision_prod.lst_price = self.env.pos.config.comision_tiempo_aire;
+                                                    comision_prod.standard_price = self.env.pos.config.comision_tiempo_aire;
 
                                                     order.add_product(comision_prod);
-                                                    order.get_last_orderline().set_descripcion(self.gui.producto.Producto);
+                                                    /*order.get_last_orderline().set_descripcion(self.env.producto.Producto);*/
 
                                                   }
-                                                  else if (self.gui.producto.Precio < self.pos.config.minimo_tiempo_aire){
+                                                  else if (self.env.producto.Precio < self.env.pos.config.minimo_tiempo_aire){
                                                       comision_prod.display_name = "Comision tiempo aire";
-                                                      comision_prod.list_price = self.pos.config.comision_tiempo_aire;
-                                                      comision_prod.lst_price = self.pos.config.comision_tiempo_aire;
-                                                      comision_prod.standard_price = self.pos.config.comision_tiempo_aire;
+                                                      comision_prod.list_price = self.env.pos.config.comision_tiempo_aire;
+                                                      comision_prod.lst_price = self.env.pos.config.comision_tiempo_aire;
+                                                      comision_prod.standard_price = self.env.pos.config.comision_tiempo_aire;
                                                       order.add_product(comision_prod);
-                                                      order.get_last_orderline().set_descripcion(self.gui.producto.Producto);
+                                                     /* order.get_last_orderline().set_descripcion(self.env.producto.Producto);*/
                                                   }
                                             }
 
@@ -365,7 +365,7 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                                     $(".no_mensaje").val(data.responseText);
                                  });
                          }else if("-1"!==data.NUM_AUTORIZACION&&"0"!==data.NUM_AUTORIZACION){
-                            //var order = self.pos.get_order();
+                            //var order = self.env.pos.get_order();
                             var order = self.env.pos.get_order();
                             var product_base = self.env.pos.db.get_product_by_barcode('TIEMPO_AIRE');
 
@@ -388,7 +388,7 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                                     comision_prod.lst_price = self.env.pos.config.comision_tiempo_aire;
                                     comision_prod.standard_price = self.env.pos.config.comision_tiempo_aire;
                                     order.add_product(comision_prod);
-                                    order.get_last_orderline().set_descripcion(self.gui.producto.Producto);
+                                    /*order.get_last_orderline().set_descripcion(self.env.producto.Producto);*/
 
                                   }
                                   else if (producto.Precio < self.env.pos.config.minimo_tiempo_aire){
@@ -397,7 +397,7 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                                       comision_prod.lst_price = self.env.pos.config.comision_tiempo_aire;
                                       comision_prod.standard_price = self.env.pos.config.comision_tiempo_aire;
                                       order.add_product(comision_prod);
-                                      order.get_last_orderline().set_descripcion(self.gui.producto.Producto);
+                                      /*order.get_last_orderline().set_descripcion(self.env.producto.Producto);*/
 
                                   }
                               }
@@ -503,157 +503,9 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                     });
 
                 });
-        }
-        clickContinuar(event) {
-                var producto =this.props.productoss [$("#combobox")[0].selectedIndex];
-                Gui.showPopup("DetallesDePagoPopup", {
-               title : "Abono",
-               "producto":producto,
-               confirmText: ("Exit")
-                  });
-        }
+                $(document).ready(function(){
 
-
-    }
-    SelectServicioPopup.template ='SelectServicio'
-    SelectServicioPopup.defaultProps = {
-       confirmText: 'Ok',
-       cancelText: 'Cancel',
-       title: 'Products',
-       body: '',
-    };
-    Registries.Component.add(SelectServicioPopup);
-
-    //detalle de servicio
-    class DetallesDePagoPopup extends AbstractAwaitablePopup {
-        constructor(event) {
-            super(...arguments);
-            let producto = this.props.producto;
-
-            if (producto != undefined){
-              var tipo = producto.TipoFront;
-                // telefono requerido
-                if (tipo == "1"){
-                    $("#input_telefono").css("display", "flex");
-                    $("#label_telefono").css("display", "flex");
-                    $("#input_monto").text(producto.Precio);
-                    $("#input_monto").val(producto.Precio);
-                }
-                else if (tipo == "4"){
-                    $("#label_ref").css("display", "flex");
-                    $("#input_ref").css("display", "flex");
-
-                }
-                //referencia requerida
-                // referencia y monto requeridos
-                else if (tipo == "2"){
-                    $("#label_ref").css("display","flex");
-                    $("#input_ref").css("display", "flex");
-                    $('#input_monto').prop('disabled', false);
-                }
-                else {
-                    $("#input_telefono").css("display", "flex");
-                    $("#label_telefono").css("display", "flex");
-                    $("#input_monto").text(producto.Precio);
-                    $("#input_monto").val(producto.Precio);
-                    $("#label_ref").css("display","flex");
-                    $("#input_ref").css("display", "flex");
-                    $('#input_monto').prop('disabled', false);
-                }
-            }
-
-            $('#input_monto').on('input',function(e){
-                var montomascomision = parseFloat($("#input_monto").val()) || 0;
-                montomascomision += parseFloat($("#comision").val()) || 0;
-
-                $("#importe_a_pagar").text( " $" + montomascomision);
-                $("#importe_a_pagar").val(montomascomision);
-            });
-
-            if (producto != undefined){
-                // tipo front 1 y 5 agarra la comision configurada
-                if(tipo == "1" || tipo == "5"){
-                    if(this.env.pos.config.comision_servicio){
-                        $("#comision").text( "Comision: $" + this.env.pos.config.comision_servicio);
-                        $("#comision").val(this.env.pos.config.comision_servicio);
-                    }
-                    $("#input_monto").text(producto.Precio);
-                    $("#input_monto").val(parseFloat(producto.Precio));
-                }
-                if(tipo == "2"){
-                    if(this.env.pos.config.comision_servicio){
-                        $("#comision").text( "Comision: $" + this.env.pos.config.comision_servicio);
-                        $("#comision").val(this.env.pos.config.comision_servicio);
-                    }
-                    else{
-                        $("#comision").text( "Comision: $" + producto.Precio);
-                        $("#comision").val(parseFloat(producto.Precio));
-                    }
-                }
-                var comision = parseFloat($("#comision").val()) || 0 ;
-                var monto = parseFloat($("#input_monto").val()) || 0;
-
-                $("#importe_a_pagar").val( " $" + String(comision+monto));
-                $("#importe_a_pagar").val(comision+monto);
-		        $("#nom_producto").text(producto.Producto);
-            }
-            var propiedades = {
-                method: 'POST',
-                async: true,
-                headers: {
-                    'Access-Control-Allow-Origin': '*'
-                },
-//                'compania':this.gui.compania,
-                'CodigoDispositivo': this.env.pos.config.usuario,
-                'PasswordDispositivo': window.btoa(this.env.pos.config.password),
-                'IdDistribuidor':this.env.pos.config.id_distribuidor,
-            };
-            $.ajax({
-                      method: "POST",
-                      url: this.env.pos.config.url+"ConsultarSaldo",
-                      data: JSON.stringify(propiedades),
-                      type: "POST",
-                      headers: {
-                            "Content-Type":"application/json"
-                      }
-            }).done(function( data ) {
-                    var saldo = data.SALDO_F;
-                    var contenedor = $("#saldo_disp");
-                    $(contenedor).text(saldo);
-
-            });
-            $.ajax({
-                    method: "POST",
-                    url: this.env.pos.config.url+"ConsultarArticulos",
-                    data: JSON.stringify(propiedades),
-                    type: "POST",
-                    headers: { "Content-Type":"application/json" }
-                }).done(function( data ) {
-                    var productoss = data; // todos los productos de todos los servicios
-                    $.each(productoss, function( k, v ) {
-                        var new_option = new Option(v.Servicio + " - " + v.Producto, v);
-                        $(new_option).attr("value",k);
-                        $(new_option).data('my_data',v);  // importante
-                        $(new_option).attr("id",v.IdProducto);
-                        $(new_option).attr("precio",v.Precio);
-                        $(new_option).attr("style","max-width: 500px;");
-
-                        var optionExists = ($('#combobox option[value=' + $(new_option).val() + ']').length > 0);
-
-                        if(!optionExists){
-                            $("#combobox").append(new_option);
-                        }
-                        $("#combobox").css("display","block");
-                    });
-            });
-           /* useListener('click-producto', this.click);*/
-        }
-
-
-
-        /* //TODO COMBOBOX
-            $( function() {
-                $.widget( "custom.combobox", {
+             $.widget( "custom.combobox", {
                     _create: function() {
                         this.wrapper = $( "<span>" )
                             .addClass( "custom-combobox" )
@@ -671,7 +523,7 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                         this.input = $( "<input>" )
                             .appendTo( this.wrapper )
                             .val( value )
-                            .attr( "title", "" )
+                            .attr( "title", "Seleccionar Servicio" )
                             .addClass( "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left" )
                             .autocomplete({
                                 delay: 0,
@@ -786,7 +638,254 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                 $( "#combobox" ).combobox();
                 $( "#toggle" ).on( "click", function() {
                     $( "#combobox" ).toggle();
-                }); */
+                });
+                });
+        }
+        clickContinuar(event) {
+                var producto =this.props.productoss [$("#combobox")[0].selectedIndex];
+                Gui.showPopup("DetallesDePagoPopup", {
+               title : "Abono",
+               "producto":producto,
+               confirmText: ("Exit")
+                  });
+        }
+
+
+    }
+    SelectServicioPopup.template ='SelectServicio'
+    SelectServicioPopup.defaultProps = {
+       confirmText: 'Ok',
+       cancelText: 'Cancel',
+       title: 'Products',
+       body: '',
+    };
+    Registries.Component.add(SelectServicioPopup);
+
+    //detalle de servicio
+    class DetallesDePagoPopup extends AbstractAwaitablePopup {
+        constructor(event) {
+            super(...arguments);
+            let producto = this.props.producto;
+           var self = this;
+
+            $( document ).ready(function() {
+            setTimeout(function(){
+            self.llenarVista(producto,self);
+            },200);
+           });
+           var propiedades = {
+                method: 'POST',
+                async: true,
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                },
+//                'compania':this.gui.compania,
+                'CodigoDispositivo': self.env.pos.config.usuario,
+                'PasswordDispositivo': window.btoa(self.env.pos.config.password),
+                'IdDistribuidor':self.env.pos.config.id_distribuidor,
+            };
+           /*self.llenarVista(producto,self);*/
+            useListener('click-siguiente', this.clickSiguente);
+            $.ajax({
+                      method: "POST",
+                      url: self.env.pos.config.url+"ConsultarSaldo",
+                      data: JSON.stringify(propiedades),
+                      type: "POST",
+                      headers: {
+                            "Content-Type":"application/json"
+                      }
+            }).done(function( data ) {
+                    var saldo = data.SALDO_F;
+                    var contenedor = $("#saldo_disp");
+                    $(contenedor).text(saldo);
+
+            });
+            $.ajax({
+                    method: "POST",
+                    url: self.env.pos.config.url+"ConsultarArticulos",
+                    data: JSON.stringify(propiedades),
+                    type: "POST",
+                    headers: { "Content-Type":"application/json" }
+                }).done(function( data ) {
+                    var productoss = data; // todos los productos de todos los servicios
+                    $.each(productoss, function( k, v ) {
+                        var new_option = new Option(v.Servicio + " - " + v.Producto, v);
+                        $(new_option).attr("value",k);
+                        $(new_option).data('my_data',v);  // importante
+                        $(new_option).attr("id",v.IdProducto);
+                        $(new_option).attr("precio",v.Precio);
+                        $(new_option).attr("style","max-width: 500px;");
+
+                        var optionExists = ($('#combobox option[value=' + $(new_option).val() + ']').length > 0);
+
+                        if(!optionExists){
+                            $("#combobox").append(new_option);
+                        }
+                        $("#combobox").css("display","block");
+                    });
+            });
+        }
+        llenarVista (producto,self){
+        var comision = 0;
+                var monto = 0;
+            $('#input_monto').prop('disabled', false);
+            if (producto != undefined){
+              var tipo = producto.TipoFront;
+                if (tipo == "1"){
+                    $(".telefono").css("display", "block");
+                    $("#label_telefono").css("display", "block");
+                    $("#input_monto").text(producto.Precio);
+                    $("#input_monto").val(producto.Precio);
+                     $('#input_monto').prop('disabled', true);
+                }
+                else if (tipo == "4"){
+                    $(".referencia").css("display", "block");
+                    $('#input_monto').prop('disabled', true);
+                }
+                //referencia requerida
+                // referencia y monto requeridos
+                else if (tipo == "2"){
+                    $(".referencia").css("display","block");
+                }else {
+                    comision= producto.Precio;
+                    $(".telefono").css("display", "block");
+                    $("#input_ref").val(producto.Precio);
+                    $(".referencia").css("display","block");
+                }
+            }
+
+            $('#input_monto').on('input',function(e){
+                var montomascomision = parseFloat($("#input_monto").val()) || 0;
+                montomascomision += parseFloat($("#input_ref").val()) || 0;
+
+                $("#importe_a_pagar").text( " $" + montomascomision);
+                $("#importe_a_pagar").val(montomascomision);
+            });
+
+            if (producto != undefined){
+                // tipo front 1 y 5 agarra la comision configurada
+                if(tipo == "1" || tipo == "5"){
+                    if(self.env.pos.config.comision_servicio){
+                        $("#input_ref").text( "$" + self.env.pos.config.comision_servicio);
+                        $("#input_ref").val(self.env.pos.config.comision_servicio);
+                    }
+                    $("#input_monto").text(producto.Precio);
+                    $("#input_monto").val(parseFloat(producto.Precio));
+                    monto = parseFloat(producto.Precio);
+                    if(self.env.pos.config.comision_servicio){
+                        comision =self.env.pos.config.comision_servicio;
+                    }
+                }
+                if(tipo == "2"){
+                    if(self.env.pos.config.comision_servicio){
+                        comision =parseFloat(self.env.pos.config.comision_servicio);
+                        $("#input_ref").text( " $" + self.env.pos.config.comision_servicio);
+                        $("#input_ref").val(self.env.pos.config.comision_servicio);
+                    }else{
+                        comision =  parseFloat(producto.Precio)
+                        $("#input_ref").val(parseFloat(producto.Precio));
+                    }
+                }
+                $("#importe_a_pagar").text("$"+(comision+monto));
+		        $("#nom_producto").text(producto.Producto);
+            }
+
+
+        }
+        clickSiguente(event){
+
+                let producto = this.props.producto;
+            	var no_telefono = $("#input_telefono").val();
+            	var referencia = $("#input_ref").val();
+            	var monto = $("#input_monto").val();
+            	$('.o_loading').show();
+                $('.cancel').removeClass("desactivado");
+                $('.ok_detalles').removeClass("desactivado");
+                $(".no_mensaje").val("Estamos realizando su operación, Por favor Espere.");
+                $(".no_mensaje").removeClass("tiene-error");
+                $('.cancel').addClass("desactivado");
+                $('.ok_detalles').addClass("desactivado");
+                console.log("telefono que se esta enviando");
+                console.log(no_telefono);
+                var self = this
+                // solicitud real
+                var parametros ={
+                    method: 'POST',
+                    async: true,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                    'CodigoDispositivo': self.env.pos.config.usuario,
+                    'PasswordDispositivo': window.btoa(self.env.pos.config.password),
+                    'IdDistribuidor':self.env.pos.config.id_distribuidor,
+                    'Telefono':no_telefono,  //Telefono
+                    'Referencia': referencia,
+                    'Monto': monto,
+                    'IdServicio':producto.IdServicio,
+                    'IdProducto':producto.IdProducto
+                };
+                $.ajax({
+                      method: "POST",
+                      url:  self.env.pos.config.url+"Abonar",
+                      data: JSON.stringify(parametros),
+                      type: "POST",
+                      headers: {
+                          "Content-Type":"application/json"
+                      }
+                }).done(function( data ) {
+                    console.log("recicibido al confirmar");
+                    console.log(data);
+                    $('.o_loading').hide();
+                    $('.cancel').removeClass("desactivado");
+                    $('#registrar_ta').removeClass("desactivado");
+                    var tel_display = "";
+                    var tipo = producto.tipo;
+                    if (tipo == "1"){
+                        tel_display = " Tel. " + no_telefono;
+                    }
+                    var order = self.env.pos.get_order();
+                    var product_base = self.env.pos.db.get_product_by_barcode('PAGO_SERV');
+                    var product_comision_base = self.env.pos.db.get_product_by_barcode('COM_PAGO_SERV');
+
+                    var product = Object.create(product_base);
+                    var product_comision = Object.create(product_comision_base);
+
+                    if (data.NUM_AUTORIZACION == "-1"){
+                       $('.cancel').removeClass("desactivado");
+                       $('.ok_detalles').removeClass("desactivado");
+                       $(".no_mensaje").addClass("tiene-error");
+                       $(".no_mensaje").val(data.TEXTO);
+                    }
+                    else{
+                        product.list_price =$("#input_monto").val();
+                        product.lst_price =$("#input_monto").val();
+                        product.standard_price =$("#input_monto").val();
+
+                        product.display_name = producto.Producto+ tel_display +" N° Autorización: "+data.NUM_AUTORIZACION;
+                        order.add_product(product);  //      ,{ quantity:$(".input_monto").val()}                         // order.add_product(product,{ price: $("#importe_a_pagar").val() , quantity:"1"});
+
+
+                        var comision_final = parseFloat($("#input_ref").val()) || 0;
+                        if(comision_final > 0)  {
+
+                            product_comision.list_price = $("#input_ref").val();
+                            product_comision.lst_price = $("#input_ref").val();
+                            product_comision.standard_price = $("#input_ref").val();
+
+                            product_comision.display_name = "Comision por pago de servicio";
+                            order.add_product(product_comision); //  ,{ quantity: parseFloat($(".comision").val())}       // order.add_product(product,{ price: $("#importe_a_pagar").val() , quantity:"1"});
+                        }
+                        self.trigger('close-popup');
+
+                        $(".no_mensaje").val(data.TEXTO);
+                        $('.cancel').removeClass("desactivado");
+                        $('.ok_detalles').removeClass("desactivado");
+                    }
+        });
+        }
+
+        /* //TODO COMBOBOX
+            $( function() { */
 
 
     }

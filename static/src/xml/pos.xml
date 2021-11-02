@@ -179,10 +179,10 @@
 
      <t t-name="SelectServicio" owl="1">
         <div class="modal-dialog center">
-            <div class="popup" style="height: 250px;width:600px;max-width:600px;">
+            <div class="popup" style="height: 340px;width:600px;max-width:600px;">
                 <p class="title" id="titulo_selec_serv">Seleccione el servicio a pagar</p>
 
-                 <select class="form-control" style="margin:13px; font-size:18px;height:40px;line-height:40px; max-width:570px;display:none;" id="combobox" placeholder="Seleccionar Servicio" >        <!-- para usar el TODO COMBOBOX se agrega  display:none;   -->
+                 <select class="form-control" style="margin:13px; font-size:18px;height:40px;line-height:40px; max-width:570px;height:0px;" id="combobox" placeholder="Seleccionar Servicio" >        <!-- para usar el TODO COMBOBOX se agrega  display:none;   -->
 
 
                  </select>
@@ -213,44 +213,42 @@
 
 
     <t t-name="DetallesDePago" owl="1">
-        <div class="modal-dialog">
-            <div class="popup" style="height:570px; width:620px;">
+        <div class="modal-dialog" style="font-size:20px; font-style: italic;">
+            <div class="popup" style="height:650px; width:700px;">
                 <p class="title" id="titulo_detalles_de_pago">Datos requeridos</p>
-                <div class="content-container" style="float: left; margin-left: 25px; width:90%;">
-                     <div style="padding:14px; width: 100%; text-align: center;">
-                        <span style="display: inline-block; margin:7px; font-size:20px; font-style:italic;">Nombre del servicio: </span>
-                        <span id="nom_producto" style="display: inline-block;">Saldo telcel</span>
-                     </div><br></br>
+                <div class="content-container" style="float: left; width:480px;">
+                     <div class="producto row" style="padding:10px; width: 100%; ">
+                          <span style=" width:150px; ">Nombre del servicio: </span>
+                        <span id="nom_producto"  style=" width:350px; "  >Saldo telcel</span>
+                     </div>
+                     <div class="monto"  style="padding:10px; width:480px;;  ">
+                        <span class="label_monto" style=" width:150px;  text-align:right">Monto: </span>
+                        <input disabled="false" id="input_monto" type="text" name="input_monto" style=" width:350px; "></input>
+                     </div>
+                     <div style="padding:10px; width:480px;;  ">
+                         <span class="comision_titulo" value="0" style="font-size: 20px;font-style: italic;width:150px;">Comision:</span>
+                         <input  class="comision" value="0.0" disabled="true"  type="text" id="input_ref" style=" width:350px; "></input>
+                       <!-- <span class="comision" value="0" style="font-size: 20px;font-style: italic; width:350px; ">$0</span>-->
+                     </div>
+                     <div class="referencia" style="display: none;padding:10px; width:480px;;  ">
+                        <span class="label_ref" style=" width:150px; text-align:right; ">Referencia:</span>
+                        <input  class="input_ref" type="text" id="input_ref" style=" width:350px; "></input>
+                     </div>
 
-                     <div disabled="true" style="float:left; padding:10px; display: flex; width:100%;">
-                        <span class="label_monto" style="margin: 7px;font-size: 20px;font-style: italic;min-width:100px; ">Monto </span>
-                        <input disabled="true" id="input_monto" type="text" name="input_monto" style="width:40%;"></input>
+                    <div class="telefono" style="display: none; padding:14px; width:480px;;  ">
+                        <span class="label_telefono" style="width:150px;text-align:right;">Telefono: </span>
+                        <input id="input_telefono" type="text" style=" width:350px; " name="input_tel"></input>
+                     </div>
 
-                         <div style="float:center; width: auto; padding:10px; display: flex; ">
-                            <span class="comision" value="0" style="font-size: 20px;font-style: italic;">Comision $0</span>
-                         </div>
-                     </div><br></br>
+                    <div style="padding:14px; width:480px;;  ">
+                        <span style="margin: 7px;font-size: 20px;font-style: italic; text-align:right; width:150px; ">Importe: </span>
+                        <span id="importe_a_pagar"  class="popup-input " style="font-size: 20px;font-style: bold; width:350px; ">$0</span>
 
-
-                     <div style="float:left; padding:10px; display: flex; width:96%;">
-                        <span class="label_ref" style="display:none; margin:7px; font-size:20px; font-style: italic; min-width:100px;">Referencia </span>
-                        <input  class="input_ref" type="text" id="input_ref" style="display: none; width:100%;"></input>
-                     </div><br></br>
-
-                    <div style="float:left; padding:10px; display: flex; width: 96%">
-                        <span class="label_telefono" style="display:none; margin:7px; font-size:20px; font-style:italic;min-width:100px;">Telefono </span>
-                        <input id="input_telefono" type="text" style="display: none; width: 100%" name="input_tel"></input>
-                     </div><br></br>
-
-                    <div style="float:left; padding:10px; display: flex; width: 96%;">
-                        <span style="margin: 7px;font-size: 20px;font-style: italic; text-align:center; min-width:100px;max-width:100px;">Importe </span>
-                        <span id="importe_a_pagar"  class="popup-input " style="font-size: 20px;font-style: bold;width:100%;">$0</span>
-
-                     </div><br></br>
+                     </div>
 
                     <div class="content-container ">
 	                   <p style="margin: 7px;font-size: 14px;">Mensaje.</p>
-                       <textarea type="text" class="no_mensaje" readonly="true" style="width:92%;"></textarea>
+                       <textarea type="text" class="no_mensaje" readonly="true" style="width:80%;"></textarea>
                     </div>
                 </div>
 

@@ -841,8 +841,9 @@ var ajax = require('web.ajax');
                         product.standard_price =$(".input_monto").val();
 
                         product.display_name = self.gui.producto.Producto+ tel_display +" N° Autorización: "+data.NUM_AUTORIZACION;
+                        product.set_descripcion = product.display_name;
                         order.add_product(product);  //      ,{ quantity:$(".input_monto").val()}                         // order.add_product(product,{ price: $("#importe_a_pagar").val() , quantity:"1"});
-                        order.get_last_orderline().set_descripcion(product.display_name);
+                        /*order.get_last_orderline().set_descripcion(product.display_name);*/
                         //order.get_last_orderline().set_unit_price($(".input_monto").val());
 
 
