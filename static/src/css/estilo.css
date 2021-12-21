@@ -1,0 +1,58 @@
+.compania{
+    width:100px;
+    height:100px;
+    background:white;
+    border: 1px solid blue;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    padding: 5px 5px 5px 5px;
+}
+.compania:hover{
+    cursor: pointer;
+}
+.pos .producto{
+   margin:1px !important;font-size:20px;
+   word-wrap: break-word;
+   line-height: 25px;padding-top:20px;
+   display: inline-block;
+}
+.producto:hover{
+    cursor: pointer;
+}
+.pos .invisible{
+    display:none;
+}
+.tiene-error{
+    border-color: #a94442 !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075) !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075) !important;
+    color:red !important;
+}
+.desactivado{ pointer-events: none; }
+
+
+/* TODO COMBOBOX */
+.custom-combobox {
+    position: relative;
+    display: inline-block;
+    width: 87%;
+    margin-top: 10px;
+}
+.custom-combobox-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: -1px;
+    padding: 0;
+}
+.custom-combobox-input {
+    margin: 0;
+    padding: 5px 10px;
+}
+.ui-autocomplete{
+  z-index:9998 !important;
+}
+a.ui-button.ui-widget.ui-button-icon-only.custom-combobox-toggle.ui-corner-right {
+min-height:45px;
+}
