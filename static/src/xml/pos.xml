@@ -67,7 +67,7 @@
                 </p>
                 <div class="content-container ">
 	                <p style="margin: 7px;font-size: 14px;">Ingresa No. de Teléfono.</p>
-                    <input type="number" class="no_telefono"/>
+                    <input type="number" class="no_telefono" id="no_telefono"/>
                 </div>
                 <div class="content-container ">
 	                <p style="margin: 7px;font-size: 14px;">Confirmar No. de Teléfono.</p>
