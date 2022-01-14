@@ -377,7 +377,7 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                             product.list_price = product_base.list_price;
                             product.lst_price = product_base.lst_price;
                             product.standard_price = product_base.standard_price;
-                            order.add_product(product,{quantity:producto.Precio, merge:false});
+                            order.add_product(product,{quantity:producto.Precio, merge:false,groupable:false});
                             var order_line = order.get_last_orderline();
                             order_line.set_description(product.display_name);
                             if(self.env.pos.config.comision_tiempo_aire){

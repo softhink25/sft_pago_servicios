@@ -112,4 +112,4 @@ class AutocreateProdPagoServicios(models.Model):
 
 
         # agregar en diferentes lineas los productos en pos
-        self.env['uom.category'].search([('name', '=', 'Unit')], limit=1).is_pos_groupable = False
+        self.env['uom.category'].search([('name', '=', 'Unit')], limit=1).is_pos_groupable = True
