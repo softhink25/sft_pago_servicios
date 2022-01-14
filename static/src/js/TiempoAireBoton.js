@@ -129,7 +129,7 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                     self.trigger('close-popup');
 
                     Gui.showPopup("ProductoPopup", {
-                       title : "Coupon Products",
+                       title : "Productos",
                        confirmText: ("Exit"),
                        productos : productos
                           });
@@ -249,6 +249,10 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
             super(...arguments);
             useListener('click-confirmar', this.clickConfirmar);
 
+             setTimeout(function(){
+            $("#no_telefono").focus();
+            $(".no_telefono").focus();
+            },60);
         }
         clickConfirmar(event) {
             console.log("clickConfirmar");
@@ -291,7 +295,8 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                          $('.o_loading').hide();
                          $('.cancel').removeClass("desactivado");
                          $('#registrar_ta').removeClass("desactivado");
-                         if("82"==data.CODIGO){
+                         if("82"==data.CODIGO)
+                         {
                                 $(".no_mensaje").val("Confirmando Transacción. Por Favor Espere.");
                                 $('.cancel').addClass("desactivado");
                                 $('#registrar_ta').addClass("desactivado");
@@ -313,41 +318,37 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                                             var product_base = self.env.pos.db.get_product_by_barcode('TIEMPO_AIRE');
 
                                             //clona producto para evitar que sobreescriba otro
-                                            var product_clone = Object.create(product_base);
-
-                                            product_clone.display_name= self.env.producto.Producto+" Tel. "+no_telefono+" No. Autorización : "+data.NUM_AUTORIZACION;
-                                            product_clone.list_price = self.env.producto.Precio;
-                                            product_clone.lst_price = self.env.producto.Precio;
-                                            product_clone.standard_price = self.env.producto.Precio;
-                                            product_clone.list_price = self.env.producto.Precio;
-                                            product_clone.set_descripcion(product_clone.display_name)  ;
-                                            order.add_product(product_clone);
-                                            /*order.get_last_orderline().set_descripcion(product_clone.display_name);*/
-
+                                            var product = Object.create(product_base);
+                                            product.display_name= producto.Producto+" Tel. "+no_telefono+" No. Autorización : "+data.NUM_AUTORIZACION;
+                                            product.list_price = product_base.list_price;
+                                            product.lst_price = product_base.lst_price;
+                                            product.standard_price = product_base.standard_price;
+                                            order.add_product(product,{quantity:producto.Precio, merge:false});
+                                            var order_line = order.get_last_orderline();
+                                            order_line.set_description(product.display_name);
                                             if(self.env.pos.config.comision_tiempo_aire){
                                                   var comision_prod_base = self.env.pos.db.get_product_by_barcode('COM_PAGO_SERV');
                                                   //clona producto para evitar que sobreescriba otro
                                                   var comision_prod = Object.create(comision_prod_base);
                                                   if(!self.env.pos.config.minimo_tiempo_aire){
                                                     comision_prod.display_name = "Comision tiempo aire";
-
                                                     comision_prod.list_price = self.env.pos.config.comision_tiempo_aire;
                                                     comision_prod.lst_price = self.env.pos.config.comision_tiempo_aire;
                                                     comision_prod.standard_price = self.env.pos.config.comision_tiempo_aire;
-
                                                     order.add_product(comision_prod);
                                                     /*order.get_last_orderline().set_descripcion(self.env.producto.Producto);*/
 
                                                   }
-                                                  else if (self.env.producto.Precio < self.env.pos.config.minimo_tiempo_aire){
+                                                  else if (producto.Precio < self.env.pos.config.minimo_tiempo_aire){
                                                       comision_prod.display_name = "Comision tiempo aire";
                                                       comision_prod.list_price = self.env.pos.config.comision_tiempo_aire;
                                                       comision_prod.lst_price = self.env.pos.config.comision_tiempo_aire;
                                                       comision_prod.standard_price = self.env.pos.config.comision_tiempo_aire;
                                                       order.add_product(comision_prod);
-                                                     /* order.get_last_orderline().set_descripcion(self.env.producto.Producto);*/
+                                                      /*order.get_last_orderline().set_descripcion(self.env.producto.Producto);*/
+
                                                   }
-                                            }
+                                              }
 
                                             self.trigger('close-popup');
                                             $(".no_mensaje").val(data.TEXTO);
@@ -358,13 +359,14 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
 
 
                                 }).fail(function( data ) {
-                                    self.$('.cancel').removeClass("desactivado");
-                                    self.$('#registrar_ta').removeClass("desactivado");
+                                     $('.cancel').removeClass("desactivado");
+                                     $('#registrar_ta').removeClass("desactivado");
                                     $('.o_loading').hide();
                                     $(".no_mensaje").addClass("tiene-error");
                                     $(".no_mensaje").val(data.responseText);
                                  });
-                         }else if("-1"!==data.NUM_AUTORIZACION&&"0"!==data.NUM_AUTORIZACION){
+                         }else if("-1"!==data.NUM_AUTORIZACION&&"0"!==data.NUM_AUTORIZACION)
+                         {
                             //var order = self.env.pos.get_order();
                             var order = self.env.pos.get_order();
                             var product_base = self.env.pos.db.get_product_by_barcode('TIEMPO_AIRE');
@@ -372,10 +374,10 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                             //clona producto para evitar que sobreescriba otro
                             var product = Object.create(product_base);
                             product.display_name= producto.Producto+" Tel. "+no_telefono+" No. Autorización : "+data.NUM_AUTORIZACION;
-                            product.list_price = producto.Precio;
-                            product.lst_price = producto.Precio;
-                            product.standard_price = producto.Precio;
-                            order.add_product(product);
+                            product.list_price = product_base.list_price;
+                            product.lst_price = product_base.lst_price;
+                            product.standard_price = product_base.standard_price;
+                            order.add_product(product,{quantity:producto.Precio, merge:false});
                             var order_line = order.get_last_orderline();
                             order_line.set_description(product.display_name);
                             if(self.env.pos.config.comision_tiempo_aire){
@@ -426,8 +428,8 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
 
 
             }else{
-                self.$('.cancel').removeClass("desactivado");
-                     self.$('#registrar_ta').removeClass("desactivado");
+                $('.cancel').removeClass("desactivado");
+                $('#registrar_ta').removeClass("desactivado");
                 $(".no_mensaje").addClass("tiene-error");
                 $(".no_mensaje").val("El No. de Télefono y la confirmación deben ser iguales, Verifique por favor.");
             }
@@ -640,14 +642,19 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                     $( "#combobox" ).toggle();
                 });
                 });
+                setTimeout(function(){
+                     $( "input.custom-combobox-input.ui-widget.ui-widget-content.ui-state-default.ui-corner-left.ui-autocomplete-input" ).focus();
+                },60);
         }
         clickContinuar(event) {
+               if($("#combobox")[0] !=undefined){
                 var producto =this.props.productoss [$("#combobox")[0].selectedIndex];
                 Gui.showPopup("DetallesDePagoPopup", {
                title : "Abono",
                "producto":producto,
                confirmText: ("Exit")
                   });
+                  }
         }
 
 
