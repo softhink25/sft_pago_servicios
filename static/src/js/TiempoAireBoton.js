@@ -323,7 +323,7 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                                             product.list_price = product_base.list_price;
                                             product.lst_price = product_base.lst_price;
                                             product.standard_price = product_base.standard_price;
-                                            order.add_product(product,{quantity:producto.Precio, merge:false});
+                                            order.add_product(product,{quantity:producto.Precio, merge:false,is_editable:false});
                                             var order_line = order.get_last_orderline();
                                             order_line.set_description(product.display_name);
                                             if(self.env.pos.config.comision_tiempo_aire){
@@ -335,7 +335,7 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                                                     comision_prod.list_price = self.env.pos.config.comision_tiempo_aire;
                                                     comision_prod.lst_price = self.env.pos.config.comision_tiempo_aire;
                                                     comision_prod.standard_price = self.env.pos.config.comision_tiempo_aire;
-                                                    order.add_product(comision_prod);
+                                                    order.add_product(comision_prod,{merge:false,is_editable:false});
                                                     /*order.get_last_orderline().set_descripcion(self.env.producto.Producto);*/
 
                                                   }
@@ -344,7 +344,7 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                                                       comision_prod.list_price = self.env.pos.config.comision_tiempo_aire;
                                                       comision_prod.lst_price = self.env.pos.config.comision_tiempo_aire;
                                                       comision_prod.standard_price = self.env.pos.config.comision_tiempo_aire;
-                                                      order.add_product(comision_prod);
+                                                      order.add_product(comision_prod,{ merge:false,is_editable:false});
                                                       /*order.get_last_orderline().set_descripcion(self.env.producto.Producto);*/
 
                                                   }
@@ -377,7 +377,7 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                             product.list_price = product_base.list_price;
                             product.lst_price = product_base.lst_price;
                             product.standard_price = product_base.standard_price;
-                            order.add_product(product,{quantity:producto.Precio, merge:false});
+                            order.add_product(product,{quantity:producto.Precio, merge:false,groupable:false});
                             var order_line = order.get_last_orderline();
                             order_line.set_description(product.display_name);
                             if(self.env.pos.config.comision_tiempo_aire){
@@ -389,7 +389,8 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                                     comision_prod.list_price = self.env.pos.config.comision_tiempo_aire;
                                     comision_prod.lst_price = self.env.pos.config.comision_tiempo_aire;
                                     comision_prod.standard_price = self.env.pos.config.comision_tiempo_aire;
-                                    order.add_product(comision_prod);
+                                    /*order.add_product();*/
+                                    order.add_product(comision_prod,{  merge:false,is_editable:false});
                                     /*order.get_last_orderline().set_descripcion(self.env.producto.Producto);*/
 
                                   }
@@ -398,7 +399,8 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                                       comision_prod.list_price = self.env.pos.config.comision_tiempo_aire;
                                       comision_prod.lst_price = self.env.pos.config.comision_tiempo_aire;
                                       comision_prod.standard_price = self.env.pos.config.comision_tiempo_aire;
-                                      order.add_product(comision_prod);
+                                      order.add_product(comision_prod,{ merge:false,groupable:false,is_editable:false});
+                                      /*order.add_product(comision_prod);*/
                                       /*order.get_last_orderline().set_descripcion(self.env.producto.Producto);*/
 
                                   }
@@ -869,8 +871,8 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                         product.standard_price =$("#input_monto").val();
 
                         product.display_name = producto.Producto+ tel_display +" N° Autorización: "+data.NUM_AUTORIZACION;
-                        order.add_product(product);  //      ,{ quantity:$(".input_monto").val()}                         // order.add_product(product,{ price: $("#importe_a_pagar").val() , quantity:"1"});
-
+                        /*order.add_product(product);  //      ,{ quantity:$(".input_monto").val()}                         // order.add_product(product,{ price: $("#importe_a_pagar").val() , quantity:"1"});*/
+                        order.add_product(product,{ merge:false,groupable:false,is_editable:false});
 
                         var comision_final = parseFloat($("#input_ref").val()) || 0;
                         if(comision_final > 0)  {
@@ -880,7 +882,8 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                             product_comision.standard_price = $("#input_ref").val();
 
                             product_comision.display_name = "Comision por pago de servicio";
-                            order.add_product(product_comision); //  ,{ quantity: parseFloat($(".comision").val())}       // order.add_product(product,{ price: $("#importe_a_pagar").val() , quantity:"1"});
+                            order.add_product(product_comision,{ merge:false,groupable:false,is_editable:false});
+                            /*order.add_product(product_comision); //  ,{ quantity: parseFloat($(".comision").val())}       // order.add_product(product,{ price: $("#importe_a_pagar").val() , quantity:"1"});*/
                         }
                         self.trigger('close-popup');
 
