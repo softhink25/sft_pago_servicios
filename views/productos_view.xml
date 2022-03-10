@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="pos_session_view_form_pos_sale" model="ir.ui.view">
+            <field name="name">product_servicios_form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <field name="tiempo_aire" string="Tiempo aire" />
+                    <field name="gp_servicio" string="Servicio" />
+                    <field name="gp_idservicio" string="Id Servicio" />
+                    <field name="gp_idproducto" string="Id producto" />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="custom_view_pos_form_" model="ir.ui.view">
+            <field name="name">add description field</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='full_product_name']" position="after">
+                    <field name="descripcion" string="Descripcion" />
+                </xpath>
+            </field>
+        </record>
+
+
+        <template id="assets" inherit_id="point_of_sale.assets_common">
+          <xpath expr="." position="inside">
+<!--              <script type="text/javascript" src="/sft_pago_servicios/static/src/js/models.js"></script>-->
+<!--              <script type="text/javascript" src="/sft_pago_servicios/static/src/js/ta_pos.js"></script>-->
+<!--              <script type="text/javascript" src="/sft_pago_servicios/static/src/js/TiempoAireBoton.js"></script>-->
+              <link rel="stylesheet" href="/sft_pago_servicios/static/src/css/estilo.css"></link>
+
+              <!-- TODO COMBOBOX-->
+              <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"></link>
+              <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+          </xpath>
+        </template>
+
+    </data>
+</odoo>
