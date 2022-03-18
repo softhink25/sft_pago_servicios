@@ -102,6 +102,7 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
             console.log("clickClient");
             console.log(event);
             let compania = event.detail.compania;
+            let idServicio = event.detail.idServicio;
             console.log(compania);
             var self = this;
             var propiedades = {
@@ -111,6 +112,7 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                     'Access-Control-Allow-Origin': '*'
                 },
                 'compania':compania,
+                'idServicio':idServicio,
                 'CodigoDispositivo': this.env.pos.config.usuario,
                 'PasswordDispositivo': window.btoa(this.env.pos.config.password),
                 'IdDistribuidor':this.env.pos.config.id_distribuidor,

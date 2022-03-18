@@ -12,23 +12,89 @@
 
     <t t-name="CompaniaPopup" owl="1">
         <div class="modal-dialog">
-            <div class="popup" style="height:450px;">
-                <p class="title">
+            <div class="popup" style="height:600px;max-width: 900px;padding-left: 20px;padding-right: 20px">
+                <div class="title">
                     Seleccionar Compañía Telefónica
-                </p>
-                <p class="subtitle">
+                </div>
+                <div class="subtitle">
                     Saldo disponible: $<span id="saldospan">00.00</span>
-                </p>
+                </div>
                 <br/>
-                <div class="content-container" style=";top:25%; left: 4%;left: 4%;">
-	                <img class="compania" t-on-click="trigger('click-compania', {compania : 2})"  compania="2" src="/sft_pago_servicios/static/img/icon_telcel.png"/>
-                    <img class="compania" t-on-click="trigger('click-compania', {compania : 3})" compania='3' src="/sft_pago_servicios/static/img/icon_att.png"/>
-                    <img class="compania" t-on-click="trigger('click-compania', {compania : 13})" compania='13' src="/sft_pago_servicios/static/img/icon_cierto.png"/>
-                    <img class="compania" t-on-click="trigger('click-compania', {compania : 13})" compania='13' src="/sft_pago_servicios/static/img/icon_maztiempo.png"/>
-                    <img class="compania" t-on-click="trigger('click-compania', {compania : 13})" compania='13' src="/sft_pago_servicios/static/img/icon_alo.png"/>
-                    <img class="compania" t-on-click="trigger('click-compania', {compania : 1})" compania='1' src="/sft_pago_servicios/static/img/icon_movistar.png"/>
-                    <img class="compania" t-on-click="trigger('click-compania', {compania : 4})" compania='4' src="/sft_pago_servicios/static/img/icon_unefon.png"/>
-                    <img class="compania" t-on-click="trigger('click-compania', {compania : 12})" compania='12' src="/sft_pago_servicios/static/img/icon_virgin.png"/>
+                <div class="content-container" style="height:450px;top:5px; left: 5px;display:grid; grid-template-columns: repeat(8, 1fr); grid-gap: 10px; overflow:auto;">
+	                <div>
+                        <div class="compania" t-on-click="trigger('click-compania', {compania : 2,idServicio:133})"  idServicio="133" compania="2" style="background-image: url(/sft_pago_servicios/static/img/icon_telcel.png);"/>
+                        <label  style="font-size:12px;">Recargas</label>
+                    </div>
+                    <div>
+                        <div class="compania" t-on-click="trigger('click-compania', {compania : 2,idServicio:159})" idServicio="159" compania="2" style="background-image: url(/sft_pago_servicios/static/img/icon_telcel.png);"/>
+                        <label  style="font-size:12px;">Paquete Amigo</label>
+                    </div>
+                    <div>
+                        <div class="compania" t-on-click="trigger('click-compania', {compania : 2,idServicio:160})" idServicio="160" compania="2" style="background-image: url(/sft_pago_servicios/static/img/icon_telcel.png);"/>
+                        <label  style="font-size:12px;">Paquete Datos</label>
+                    </div>
+                    <div>
+                        <div class="compania" t-on-click="trigger('click-compania', {compania : 2,idServicio:161})"  idServicio="61" compania="2" style="background-image: url(/sft_pago_servicios/static/img/icon_telcel.png);"/>
+                        <label  style="font-size:12px;">Paquete SMS</label>
+                    </div>
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 3,idServicio:115})" idServicio="115" compania='3' style="background-image: url(/sft_pago_servicios/static/img/icon_att.png);"/>
+                    <div>
+                        <div class="compania" t-on-click="trigger('click-compania', {compania : 1,idServicio:124})" idServicio="124" compania='1' style="background-image: url(/sft_pago_servicios/static/img/icon_movistar.png);"/>
+                        <label  style="font-size:12px;">Recargas</label>
+                    </div>
+                    <div>
+                        <div class="compania" t-on-click="trigger('click-compania', {compania : 1,idServicio:102})" idServicio="102" compania='1' style="background-image: url(/sft_pago_servicios/static/img/icon_movistar.png);"/>
+                        <label  style="font-size:12px;">Paquetes Min y SMS</label>
+                    </div>
+
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 4,idServicio:116})" idServicio="116" compania='4' style="background-image: url(/sft_pago_servicios/static/img/icon_unefon.png);"/>
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:104})" idServicio="104" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_virgin.png);"/>
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:1487})" idServicio="1487" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_bait.png);"/>
+                    <div>
+                        <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:1591})" idServicio="1591"  compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_bait.png);"/>
+                        <label  style="font-size:12px;">Internet Casa</label>
+                    </div>
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:1446})" idServicio="1446" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_diri.png);"/>
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:157})" idServicio="157" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_compart.png);"/>
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:683})" idServicio="683" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_flash.png);"/>
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:1128})" idServicio="1128" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_freedom.png);"/>
+                    <div>
+                        <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:8172})" idServicio="8172" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_gugacom.png);"/>
+                        <label  style="font-size:12px;">Telefonía</label>
+                    </div>
+                    <div>
+                        <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:1179})"  idServicio="1179" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_gugacom.png);"/>
+                        <label  style="font-size:12px;">Internet</label>
+                    </div>
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:1386})" idServicio="1386" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_mimovil.png);"/>
+                    <div>
+                        <div class="compania" t-on-click="trigger('click-compania', {compania : 19,idServicio:1161})" idServicio="1161" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_netwey.png);"/>
+                        <label  style="font-size:12px;">Recargas</label>
+                    </div>
+                    <div>
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 19,idServicio:126})" idServicio="126" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_netwey.png);"/>
+                        <label  style="font-size:12px;">Internet Prepago</label>
+                    </div>
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:1490})"  idServicio="1490" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_newww.png);"/>
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:78})" idServicio="78"  compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_oui.png);"/>
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:1449})" idServicio="1449" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_pillo.png);"/>
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:69})" idServicio="69" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_simpati.png);"/>
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:1458})" idServicio="1458" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_soriana.png);"/>
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:1493})" idServicio="1493" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_telmovil.png);"/>
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:1526})" idServicio="1526" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_tricomx.png);"/>
+                    <div>
+                        <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:1263})" idServicio="1263" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_valor.png);"/>
+                        <label  style="font-size:12px;">Internet CASA</label>
+                    </div>
+                    <div>
+                        <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:1260})" idServicio="1260" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_valor.png);"/>
+                        <label  style="font-size:12px;">Internet Móvil</label>
+                    </div>
+                    <div>
+                        <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:1257})" idServicio="1257" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_valor.png);"/>
+                        <label  style="font-size:12px;">Telefonía Móvil</label>
+                    </div>
+                    <div class="compania" t-on-click="trigger('click-compania', {compania : 12,idServicio:1458})" idServicio="1458" compania='12' style="background-image: url(/sft_pago_servicios/static/img/icon_wimo.png);"/>
                 </div>
                 <div class="footer">
                     <div class='button accept' id="registar_abono" t-on-click="trigger('click-abono',{})">
@@ -43,10 +109,10 @@
     </t>
     <t t-name="ProductoPopup" owl="1">
         <div class="modal-dialog">
-            <div class="popup" style="height: 600px;width:550px;">
+            <div class="popup" style="height:650px;max-width: 900px;">
                 <p class="title" id="titulo_producto"/>
                 <div class="content-container product-list-scroller touch-scrollable"
-                     style="position: absolute;top:50px; left: 1%;max-height: 470px;" id="contenedor_producto">
+                     style="top:50px; left: 1%;max-height: 470px;" id="contenedor_producto">
                     <div class="product producto invisible" id="producto_base"></div>
                     <t t-foreach="props.productos" t-as="producto" t-key="producto.IdProducto">
 
@@ -55,8 +121,38 @@
                         </div>
                     </t>
                 </div>
+                <div class="footer">
+                    <div  t-on-click="confirm" class="button cancel" id="producto_cancel">
+                        Cancel
+                    </div>
+                </div>
 
             </div>
+
+        </div>
+    </t>
+    <t t-name="AgrupadorPopup" owl="1">
+        <div class="modal-dialog">
+            <div class="popup" style="height:650px;max-width: 820px;">
+                <p class="title" id="titulo_producto"/>
+                <div class="content-container product-list-scroller touch-scrollable"
+                     style="top:50px; left: 1%;max-height: 470px;" id="contenedor_producto">
+                    <div class="product producto invisible" id="producto_base"></div>
+                    <t t-foreach="props.productos" t-as="producto" t-key="producto.IdProducto">
+
+                        <div class="product producto" t-on-click="trigger('click-producto', {producto : producto})" >
+                            <t t-esc="producto.Producto"  />
+                        </div>
+                    </t>
+                </div>
+                <div class="footer">
+                    <div  t-on-click="confirm" class="button cancel" id="producto_cancel">
+                        Cancel
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </t>
     <t t-name="TiempoAirePopup" owl="1">
@@ -154,30 +250,7 @@
             </div>
         </div>
     </t>
-    <!--<t t-name="ProductoPopup">
-        <div class="modal-dialog">
-            <div class="popup" style="height: 600px;width:550px;">
-                <p class="title" id="titulo_producto"/>
-                <div class="content-container product-list-scroller touch-scrollable"
-                     style="position: absolute;top:50px; left: 1%;max-height: 470px;" id="contenedor_producto">
-                    <div class="product producto invisible" id="producto_base"></div>
-                </div>
-                <div class="footer">
-                    <div class="button cancel">
-                        Cancel
-                    </div>
-                </div>
-            </div>
-        </div>
-    </t>-->
-
-
-
-
-
-    <!-- *-*-*-*- Pago de servicios -*-*-*-*-*-* -->
-
-     <t t-name="SelectServicio" owl="1">
+    <t t-name="SelectServicio" owl="1">
         <div class="modal-dialog center">
             <div class="popup" style="height: 340px;width:600px;max-width:600px;">
                 <p class="title" id="titulo_selec_serv">Seleccione el servicio a pagar</p>
@@ -186,14 +259,6 @@
 
 
                  </select>
-                <!-- TODO COMBOBOX-->
-                <!--<span class="custom-combobox" >
-                    <input title="" class="custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left ui-autocomplete-input" autocomplete="off"></input>
-                    <a class="ui-button ui-widget ui-button-icon-only custom-combobox-toggle ui-corner-right" tabindex="-1" title="Show All Items" role="button">
-                        <span class="ui-button-icon ui-icon ui-icon-triangle-1-s"></span>
-                        <span class="ui-button-icon-space"> </span>
-                    </a>
-                </span>-->
 
                 <p class="subtitle">
                     Saldo disponible: $<span id="saldo_disp">00.00</span>
@@ -210,8 +275,6 @@
             </div>
         </div>
     </t>
-
-
     <t t-name="DetallesDePago" owl="1">
         <div class="modal-dialog" style="font-size:20px; font-style: italic;">
             <div class="popup" style="height:650px; width:700px;">
