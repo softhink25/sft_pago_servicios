@@ -807,7 +807,7 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
 
                 let producto = this.props.producto;
             	var no_telefono = $("#input_telefono").val();
-            	var referencia = $("#input_ref").val();
+            	var referencia = $("#input_referencia").val();
             	var monto = $("#input_monto").val();
             	$('.o_loading').show();
                 $('.cancel').removeClass("desactivado");

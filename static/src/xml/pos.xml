@@ -295,7 +295,7 @@
                      </div>
                      <div class="referencia" style="display: none;padding:10px; width:480px;;  ">
                         <span class="label_ref" style=" width:150px; text-align:right; ">Referencia:</span>
-                        <input  class="input_ref" type="text" id="input_ref" style=" width:350px; "></input>
+                        <input  class="input_ref" type="text" id="input_referencia" style=" width:350px; "></input>
                      </div>
 
                     <div class="telefono" style="display: none; padding:14px; width:480px;;  ">
