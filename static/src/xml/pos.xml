@@ -254,12 +254,10 @@
         <div class="modal-dialog center">
             <div class="popup" style="height: 340px;width:600px;max-width:600px;">
                 <p class="title" id="titulo_selec_serv">Seleccione el servicio a pagar</p>
-
-                 <select class="form-control" style="margin:13px; font-size:18px;height:40px;line-height:40px; max-width:570px;height:0px;" id="combobox" placeholder="Seleccionar Servicio" >        <!-- para usar el TODO COMBOBOX se agrega  display:none;   -->
-
-
-                 </select>
-
+                <div style="display:block;">
+                     <select class="form-control" style="margin:13px; font-size:18px;height:40px;line-height:40px; max-width:570px;height:0px;display:block;" id="combobox" placeholder="Seleccionar Servicio" >        <!-- para usar el TODO COMBOBOX se agrega  display:none;   -->
+                     </select>
+                </div>
                 <p class="subtitle">
                     Saldo disponible: $<span id="saldo_disp">00.00</span>
                 </p>

@@ -641,12 +641,13 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                     }
                 });
 
-                $( "#combobox" ).combobox();
+
                 $( "#toggle" ).on( "click", function() {
                     $( "#combobox" ).toggle();
                 });
                 });
                 setTimeout(function(){
+                     $( "#combobox" ).combobox();
                      $( "input.custom-combobox-input.ui-widget.ui-widget-content.ui-state-default.ui-corner-left.ui-autocomplete-input" ).focus();
                 },60);
         }
@@ -726,9 +727,7 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                         $(new_option).attr("id",v.IdProducto);
                         $(new_option).attr("precio",v.Precio);
                         $(new_option).attr("style","max-width: 500px;");
-
                         var optionExists = ($('#combobox option[value=' + $(new_option).val() + ']').length > 0);
-
                         if(!optionExists){
                             $("#combobox").append(new_option);
                         }
@@ -804,7 +803,6 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
 
         }
         clickSiguente(event){
-
                 let producto = this.props.producto;
             	var no_telefono = $("#input_telefono").val();
             	var referencia = $("#input_referencia").val();
@@ -857,10 +855,8 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                     var order = self.env.pos.get_order();
                     var product_base = self.env.pos.db.get_product_by_barcode('PAGO_SERV');
                     var product_comision_base = self.env.pos.db.get_product_by_barcode('COM_PAGO_SERV');
-
                     var product = Object.create(product_base);
                     var product_comision = Object.create(product_comision_base);
-
                     if (data.NUM_AUTORIZACION == "-1"){
                        $('.cancel').removeClass("desactivado");
                        $('.ok_detalles').removeClass("desactivado");
@@ -871,34 +867,23 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
                         product.list_price =$("#input_monto").val();
                         product.lst_price =$("#input_monto").val();
                         product.standard_price =$("#input_monto").val();
-
-                        product.display_name = producto.Producto+ tel_display +" N° Autorización: "+data.NUM_AUTORIZACION;
-                        /*order.add_product(product);  //      ,{ quantity:$(".input_monto").val()}                         // order.add_product(product,{ price: $("#importe_a_pagar").val() , quantity:"1"});*/
+                        product.display_name = "Servicio: "+ producto.Producto +" " + tel_display +" N° Autorización: "+data.NUM_AUTORIZACION+"  Referencia: "+$("#input_referencia").val();;
                         order.add_product(product,{ merge:false,groupable:false,is_editable:false});
-
                         var comision_final = parseFloat($("#input_ref").val()) || 0;
                         if(comision_final > 0)  {
-
                             product_comision.list_price = $("#input_ref").val();
                             product_comision.lst_price = $("#input_ref").val();
                             product_comision.standard_price = $("#input_ref").val();
-
                             product_comision.display_name = "Comision por pago de servicio";
                             order.add_product(product_comision,{ merge:false,groupable:false,is_editable:false});
-                            /*order.add_product(product_comision); //  ,{ quantity: parseFloat($(".comision").val())}       // order.add_product(product,{ price: $("#importe_a_pagar").val() , quantity:"1"});*/
                         }
                         self.trigger('close-popup');
-
                         $(".no_mensaje").val(data.TEXTO);
                         $('.cancel').removeClass("desactivado");
                         $('.ok_detalles').removeClass("desactivado");
                     }
         });
         }
-
-        /* //TODO COMBOBOX
-            $( function() { */
-
 
     }
     DetallesDePagoPopup.template ='DetallesDePago'
