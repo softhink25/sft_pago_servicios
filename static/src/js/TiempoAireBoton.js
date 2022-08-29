@@ -321,13 +321,13 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
 
                                             //clona producto para evitar que sobreescriba otro
                                             var product = Object.create(product_base);
-                                            product.display_name= producto.Producto+" Tel. "+no_telefono+" No. Autorización : "+data.NUM_AUTORIZACION;
+                                            product.display_name= producto.Servicio+" "+ producto.Producto+" Tel. "+no_telefono+" No. Autorización : "+data.NUM_AUTORIZACION;
                                             product.list_price = product_base.list_price;
                                             product.lst_price = product_base.lst_price;
                                             product.standard_price = product_base.standard_price;
                                             order.add_product(product,{quantity:producto.Precio, merge:false,is_editable:false});
                                             var order_line = order.get_last_orderline();
-                                            order_line.set_description(product.display_name);
+//                                            order_line.set_description(product.display_name);
                                             if(self.env.pos.config.comision_tiempo_aire){
                                                   var comision_prod_base = self.env.pos.db.get_product_by_barcode('COM_PAGO_SERV');
                                                   //clona producto para evitar que sobreescriba otro
@@ -375,13 +375,13 @@ odoo.define('sft_pago_servicios.TiempoAireBoton', function(require) {
 
                             //clona producto para evitar que sobreescriba otro
                             var product = Object.create(product_base);
-                            product.display_name= producto.Producto+" Tel. "+no_telefono+" No. Autorización : "+data.NUM_AUTORIZACION;
+                            product.display_name=  producto.Servicio+" " +producto.Producto+" Tel. "+no_telefono+" No. Autorización : "+data.NUM_AUTORIZACION;
                             product.list_price = product_base.list_price;
                             product.lst_price = product_base.lst_price;
                             product.standard_price = product_base.standard_price;
                             order.add_product(product,{quantity:producto.Precio, merge:false,groupable:false});
                             var order_line = order.get_last_orderline();
-                            order_line.set_description(product.display_name);
+//                            order_line.set_description(product.display_name);
                             if(self.env.pos.config.comision_tiempo_aire){
                                   var comision_prod_base = self.env.pos.db.get_product_by_barcode('COM_PAGO_SERV');
                                   //clona producto para evitar que sobreescriba otro
