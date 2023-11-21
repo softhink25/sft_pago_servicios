@@ -23,7 +23,7 @@
     # ],
     'data': [
         'views/productos_view.xml',
-        "views/view_pos_config.xml"
+        "views/pos_config_settings.xml"
     ],
     'installable': True,
     'application': True,

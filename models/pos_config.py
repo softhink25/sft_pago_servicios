@@ -3,8 +3,8 @@ from odoo import models, fields, api, _
 from odoo.tools import float_is_zero
 
 
-class PosConfig(models.Model):
-    _inherit = 'pos.config'
+class PosConfigPagos(models.Model):
+    _name = 'pos.config.pagos'
 
     url = fields.Char(string='URL de Servicio')
     usuario = fields.Char(string='Usuario')
