@@ -1,4 +1,9 @@
-# Byte-compiled / optimized / DLL files
+# Byte-compiled / optimized / DLL filidea/custom-addons.iml                                |   9 +++++++++
+ .idea/inspectionProfiles/profiles_settings.xml         |   6 ++++++
+ .idea/misc.xml                                         |   4 ++++
+ .idea/modules.xml                                      |   9 +++++++++
+ .idea/vcs.xml                                          |   7 +++++++
+ .idea/workspacees
 __pycache__/
 *.py[cod]
 *$py.class

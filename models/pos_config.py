@@ -4,7 +4,7 @@ from odoo.tools import float_is_zero
 
 
 class PosConfigPagos(models.Model):
-    _name = 'pos.config.pagos'
+    _inherit = 'pos.config'
 
     url = fields.Char(string='URL de Servicio')
     usuario = fields.Char(string='Usuario')

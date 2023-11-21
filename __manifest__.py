@@ -9,7 +9,7 @@
     'license': 'AGPL-3',
     'category': 'Point of sale',
     'summary': 'Pago de servicios',
-    'depends': ['point_of_sale'],
+    'depends': ['base_setup', 'point_of_sale'],
     'assets': {
         'point_of_sale.assets': [
             'sft_pago_servicios/static/src/js/**/*',
