@@ -1,13 +1,13 @@
 odoo.define('pos_ta.pos_ta',   function (require) {
-"use strict";
-var module = require('point_of_sale.models');
-var chrome = require('point_of_sale.chrome');
-var core = require('web.core');
-var PosPopWidget = require('point_of_sale.popups');
-
+'use strict';
+const module = require('point_of_sale.models');
+const chrome = require('point_of_sale.chrome');
+const core = require('web.core');
+const PosPopWidget = require('point_of_sale.popups');
 var PosBaseWidget = require('point_of_sale.BaseWidget');
 var gui = require('point_of_sale.gui');
 var screens = require('point_of_sale.screens');
+
 var ajax = require('web.ajax');
     var TiempoAireButton = screens.ActionButtonWidget.extend({
         template: 'TiempoAireButton',

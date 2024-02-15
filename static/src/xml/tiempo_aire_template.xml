@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template id="template" xml:space="preserve">
+  <t t-name="TiempoAireButton" owl="1">
+      <div class="control-button">
+          <i class="fa fa-money"> </i>
+          <span> </span>
+          <span>Tiempo Aire</span>
+      </div>
+  </t>
+    <t t-name="PagoServicioButton" owl="1">
+      <div class="control-button">
+          <i class="fa fa-money"> </i>
+          <span> </span>
+          <span>Pago Servicio</span>
+      </div>
+  </t>
+
+
+</template>

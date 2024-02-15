@@ -13,17 +13,16 @@
     'assets': {
         'point_of_sale.assets': [
             'sft_pago_servicios/static/src/js/**/*',
+            'sft_pago_servicios/static/src/xml/tiempo_aire_template.xml',
+            'sft_pago_servicios/static/src/xml/pos.xml',
         ],
         'web.assets_qweb': [
             'sft_pago_servicios/static/src/xml/**/*',
         ],
     },
-    # 'qweb': [
-    #     'static/src/xml/pos.xml',
-    # ],
     'data': [
         'views/productos_view.xml',
-        "views/pos_config_settings.xml"
+        "views/pos_config_settings.xml",
     ],
     'installable': True,
     'application': True,

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
-
-
     <t t-name="TiempoAireBoton" owl="1">
        <span class="control-button" t-att-class="is_available()?    'highlight' : ''">
            <i class="fa fa-mobile"></i>
@@ -10,7 +8,7 @@
        </span>
    </t>
 
-    <t t-name="CompaniaPopup" owl="1">
+    <t t-name="CompaniaPopup" id="CompaniaPopup" owl="1">
         <div class="modal-dialog">
             <div class="popup" style="height:600px;max-width: 900px;padding-left: 20px;padding-right: 20px">
                 <div class="title">
@@ -22,7 +20,7 @@
                 <br/>
                 <div class="content-container" style="height:450px;top:5px; left: 5px;display:grid; grid-template-columns: repeat(8, 1fr); grid-gap: 10px; overflow:auto;">
 	                <div>
-                        <div class="compania" t-on-click="trigger('click-compania', {compania : 2,idServicio:133})"  idServicio="133" compania="2" style="background-image: url(/sft_pago_servicios/static/img/icon_telcel.png);"/>
+                        <div class="compania" t-on-click="onSeleccionarCompania" context="{compania : 2,idServicio:133}" idServicio="133" compania="2" style="background-image: url(/sft_pago_servicios/static/img/icon_telcel.png);"/>
                         <label  style="font-size:12px;">Recargas</label>
                     </div>
                     <div>
@@ -107,7 +105,7 @@
             </div>
         </div>
     </t>
-    <t t-name="ProductoPopup" owl="1">
+     <t t-name="ProductoPopup" owl="1">
         <div class="modal-dialog">
             <div class="popup" style="height:650px;max-width: 900px;">
                 <p class="title" id="titulo_producto"/>
@@ -175,7 +173,7 @@
                     <textarea type="text" class="no_mensaje" readonly="true" style="width:78%;"></textarea>
                 </div>
                 <div class="footer">
-                    <div class="button " t-on-click="trigger('click-confirmar', {producto : producto})" id="registrar_ta">
+                    <div class="button " t-on-click="onConfirmarTa" id="registrar_ta">
                         Confirm
                     </div>
                     <div  t-on-click="confirm" class="button cancel">
